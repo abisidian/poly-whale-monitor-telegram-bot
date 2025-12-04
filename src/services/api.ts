@@ -4,7 +4,7 @@ const ACTIVITY_URL = 'https://data-api.polymarket.com/activity';
 const DEFAULT_LIMIT = 25;
 const INITIAL_DELAY_MS = 5000;
 const RETRY_DELAY_MS = 5000;
-const MAX_RETRIES = 10;
+const MAX_RETRIES = 15;
 
 export type PolymarketActivity = {
   proxyWallet: string;
@@ -94,6 +94,7 @@ function pickTradeCandidate(
     if (!tradeTx) return false;
     return tradeTx === normalizedTxHash;
   });
+  console.log(normalizedTxHash, trades[0], 123)
   if (txMatched) return txMatched;
   return null;
 }
